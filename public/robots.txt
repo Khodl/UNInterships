@@ -1,2 +1,3 @@
 User-Agent: *
-Disallow:
+Disallow: /jobs/
+Crawl-delay: 5
