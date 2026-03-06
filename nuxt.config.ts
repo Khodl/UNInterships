@@ -38,5 +38,9 @@ export default defineNuxtConfig({
     untalentToken: '',
   },
 
+  nitro: {
+    preset: 'vercel',
+  },
+
   modules: ['@nuxtjs/tailwindcss', '@nuxt/content'],
 })

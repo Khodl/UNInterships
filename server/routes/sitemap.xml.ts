@@ -1,15 +1,34 @@
 import { readdir } from 'node:fs/promises'
-import { resolve } from 'node:path'
+import { resolve, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 export default defineEventHandler(async () => {
   const siteUrl = 'https://uninternships.org'
 
-  // Read FAQ slugs from content directory
-  const faqDir = resolve(process.cwd(), 'content/faq')
-  const files = await readdir(faqDir)
-  const faqSlugs = files
-    .filter((f) => f.endsWith('.md'))
-    .map((f) => f.replace(/\.md$/, ''))
+  // Try source content dir first (dev), then build output (prod)
+  let faqSlugs: string[] = []
+  const candidates = [
+    resolve(process.cwd(), 'content/faq'),
+    resolve(dirname(fileURLToPath(import.meta.url)), '../../public/__nuxt_content/faq'),
+  ]
+
+  for (const dir of candidates) {
+    try {
+      const files = await readdir(dir)
+      faqSlugs = files
+        .filter((f) => f.endsWith('.md'))
+        .map((f) => f.replace(/\.md$/, ''))
+      if (faqSlugs.length) break
+    } catch {}
+  }
+
+  // Fallback: query the content API
+  if (!faqSlugs.length) {
+    try {
+      const articles = await $fetch<{ path: string }[]>('/api/_content/query/faq')
+      faqSlugs = articles.map((a) => a.path.replace('/faq/', ''))
+    } catch {}
+  }
 
   const { untalentToken } = useRuntimeConfig()
   const result = await $fetch<{ total: number }>('https://untalent.org/api/v1/jobs', {
@@ -19,7 +38,6 @@ export default defineEventHandler(async () => {
 
   const urls: { loc: string; changefreq: string; priority: number }[] = []
 
-  // Index pages
   for (let i = 0; i < totalPages; i++) {
     urls.push({
       loc: i === 0 ? '/' : `/?page=${i + 1}`,
@@ -28,10 +46,8 @@ export default defineEventHandler(async () => {
     })
   }
 
-  // FAQ index
   urls.push({ loc: '/faq', changefreq: 'weekly', priority: 0.8 })
 
-  // FAQ articles
   for (const slug of faqSlugs) {
     urls.push({ loc: `/faq/${slug}`, changefreq: 'monthly', priority: 0.7 })
   }
