@@ -1,14 +1,15 @@
+import { readdir } from 'node:fs/promises'
+import { resolve } from 'node:path'
+
 export default defineEventHandler(async () => {
   const siteUrl = 'https://uninternships.org'
 
-  const faqSlugs = [
-    'what-is-untalent',
-    'how-to-apply',
-    'eligibility-requirements',
-    'remote-internships',
-    'after-the-internship',
-    'duty-stations',
-  ]
+  // Read FAQ slugs from content directory
+  const faqDir = resolve(process.cwd(), 'content/faq')
+  const files = await readdir(faqDir)
+  const faqSlugs = files
+    .filter((f) => f.endsWith('.md'))
+    .map((f) => f.replace(/\.md$/, ''))
 
   const { untalentToken } = useRuntimeConfig()
   const result = await $fetch<{ total: number }>('https://untalent.org/api/v1/jobs', {
