@@ -44,7 +44,6 @@ useHead({
         <NuxtLink :to="article.path" class="block group">
           <h2 class="text-lg font-semibold text-[#009EDB] group-hover:underline">{{ article.title }}</h2>
           <p v-if="article.description" class="mt-1 text-sm text-gray-500">{{ article.description }}</p>
-          <span v-if="article.date" class="text-xs text-gray-400 mt-1 inline-block">{{ article.date }}</span>
         </NuxtLink>
       </li>
     </ul>

@@ -7,9 +7,9 @@ defineProps({
 
 <template>
   <section v-if="showIntro" class="mb-8 pb-6 border-b-2 border-gray-200">
+    <h1 class="text-2xl font-bold text-gray-900 mb-3">{{ total }} UN Internships & Jobs Available Now</h1>
     <p class="text-gray-600 leading-relaxed">
       Browse the latest internship and job opportunities across United Nations agencies and international organizations.
-      {{ total }} positions currently available worldwide.
     </p>
     <a
       href="https://untalent.org"
