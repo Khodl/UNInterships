@@ -1,7 +1,7 @@
 ---
 title: What are UN internships?
 description: An overview of internship programs across the United Nations system.
-date: "2026-03-01"
+date: "2025-06-10"
 ---
 
 United Nations internships are short-term opportunities offered by UN agencies, funds, and programs to students and recent graduates. They provide hands-on experience in areas such as human rights, development, peacekeeping, climate action, and public health.

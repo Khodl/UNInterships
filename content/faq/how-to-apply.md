@@ -1,7 +1,7 @@
 ---
 title: How to apply for a UN internship?
 description: Step-by-step guide to the UN internship application process.
-date: "2026-03-02"
+date: "2025-07-15"
 ---
 
 The application process varies by agency, but the general steps are similar across the UN system.

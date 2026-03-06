@@ -11,6 +11,18 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', href: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🌍</text></svg>' },
       ],
+      script: [
+        {
+          type: 'application/ld+json',
+          innerHTML: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'UN Internships',
+            url: 'https://uninternships.org',
+            description: 'Browse the latest UN internship and job opportunities across United Nations agencies and international organizations.',
+          }),
+        },
+      ],
       meta: [
         { name: 'description', content: 'Browse the latest UN internship and job opportunities across United Nations agencies and international organizations.' },
         { name: 'theme-color', content: '#009EDB' },

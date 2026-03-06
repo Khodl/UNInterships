@@ -1,7 +1,7 @@
 ---
 title: What happens after a UN internship?
 description: Career paths, contracts, and how to transition from intern to UN staff.
-date: "2026-03-05"
+date: "2025-11-18"
 ---
 
 A UN internship is often the first step toward a career in international organizations. Here's what to expect once it ends.

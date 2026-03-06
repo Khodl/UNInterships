@@ -16,6 +16,22 @@ useHead({
     { property: 'og:title', content: article.value.title },
     { name: 'description', content: article.value.description || '' },
   ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: article.value.title,
+        description: article.value.description || '',
+        datePublished: article.value.date || '',
+        publisher: {
+          '@type': 'Organization',
+          name: 'UN Internships',
+        },
+      }),
+    },
+  ],
 })
 </script>
 

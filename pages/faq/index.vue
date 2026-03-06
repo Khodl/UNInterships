@@ -3,12 +3,32 @@ const { data: articles } = await useAsyncData('faq-list', () =>
   queryCollection('faq').order('date', 'DESC').all()
 )
 
+const faqSchema = computed(() => {
+  if (!articles.value) return []
+  return [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: articles.value.map((a) => ({
+        '@type': 'Question',
+        name: a.title,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: a.description || '',
+        },
+      })),
+    }),
+  }]
+})
+
 useHead({
   title: 'FAQ — UN Internships',
   meta: [
     { property: 'og:title', content: 'FAQ — UN Internships' },
     { name: 'description', content: 'Frequently asked questions about UN internships and job opportunities.' },
   ],
+  script: faqSchema,
 })
 </script>
 

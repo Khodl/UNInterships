@@ -1,7 +1,7 @@
 ---
 title: Can you do a UN internship remotely?
 description: What you need to know about remote and hybrid UN internship opportunities.
-date: "2026-03-04"
+date: "2025-10-05"
 ---
 
 Since 2020, many UN agencies have introduced remote and hybrid internship options. While in-person internships remain the norm, remote opportunities have become a permanent part of the system.

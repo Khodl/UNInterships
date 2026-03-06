@@ -17,7 +17,7 @@ defineProps({
       rel="noopener"
       class="inline-block mt-4 px-5 py-2.5 bg-[#009EDB] text-white rounded-md text-sm hover:bg-[#0082b6] transition-colors"
     >
-      View all opportunities on UNtalent.org
+      Explore all opportunities
     </a>
   </section>
 </template>

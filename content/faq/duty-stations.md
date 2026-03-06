@@ -1,7 +1,7 @@
 ---
 title: Where are UN internships located?
 description: A guide to UN duty stations and where you can intern around the world.
-date: "2026-03-06"
+date: "2026-01-12"
 ---
 
 The United Nations operates in over 190 countries. Internships are available at headquarters, regional offices, and field locations worldwide.

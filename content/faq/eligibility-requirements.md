@@ -1,7 +1,7 @@
 ---
 title: Who is eligible for UN internships?
 description: Understand the academic, language, and age requirements for UN internship programs.
-date: "2026-03-03"
+date: "2025-08-22"
 ---
 
 Eligibility criteria vary across UN agencies, but most share a common set of requirements.

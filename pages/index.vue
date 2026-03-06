@@ -18,12 +18,44 @@ const title = computed(() =>
     : `UN Internships — Page ${page.value}`
 )
 
+const jobPostingSchema = computed(() => {
+  if (!result.value?.jobs) return []
+  return result.value.jobs.map((job) => {
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'JobPosting',
+      title: job.title,
+      description: job.description || '',
+      url: `https://untalent.org/jobs/${job.slug}`,
+      hiringOrganization: {
+        '@type': 'Organization',
+        name: job.company?.name || '',
+        ...(job.logo_url && { logo: job.logo_url }),
+      },
+    }
+    if (job.locations?.length) {
+      schema.jobLocation = job.locations.map((l) => ({
+        '@type': 'Place',
+        address: { '@type': 'PostalAddress', addressLocality: l.name },
+      }))
+    }
+    if (job.expire_at) {
+      schema.validThrough = job.expire_at
+    }
+    return {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(schema),
+    }
+  })
+})
+
 useHead({
   title,
   meta: [
     { property: 'og:title', content: title },
     { property: 'og:description', content: `Browse ${result.value?.total ?? 0} UN internship and job opportunities worldwide.` },
   ],
+  script: jobPostingSchema,
 })
 </script>
 

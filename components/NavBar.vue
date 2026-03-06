@@ -11,7 +11,7 @@
           rel="noopener"
           class="px-4 py-2 bg-[#009EDB] text-white rounded-md text-sm hover:bg-[#0082b6] transition-colors"
         >
-          UNtalent.org
+          Explore more
         </a>
       </div>
     </div>
