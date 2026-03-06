@@ -1,6 +1,10 @@
 <template>
-  <div>
+  <div class="min-h-screen flex flex-col">
     <NuxtRouteAnnouncer />
-    <NuxtPage />
+    <NavBar />
+    <main class="flex-1">
+      <NuxtPage />
+    </main>
+    <AppFooter />
   </div>
 </template>

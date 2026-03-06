@@ -26,5 +26,5 @@ export default defineNuxtConfig({
     untalentToken: '',
   },
 
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/content'],
 })

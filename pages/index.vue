@@ -31,6 +31,8 @@ useHead({
   <div class="max-w-3xl mx-auto p-8 font-sans">
     <Hero :total="result?.total ?? 0" :show-intro="page === 1" />
 
+    <h1 v-if="page > 1" class="text-2xl font-bold text-gray-900 mb-6">Jobs — Page {{ page }}</h1>
+
     <p v-if="status === 'pending'" class="text-gray-500">Chargement...</p>
     <p v-else-if="status === 'error'" class="text-red-600">Erreur lors du chargement des offres.</p>
 
