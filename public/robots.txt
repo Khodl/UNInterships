@@ -1,3 +1,5 @@
 User-Agent: *
 Disallow: /jobs/
 Crawl-delay: 5
+
+Sitemap: https://uninternships.org/sitemap.xml
